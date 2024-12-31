@@ -1,0 +1,136 @@
+In Angular, a service is a class that encapsulates reusable functionality that can be shared across different parts of your application. Services are used to organize and share code, data, and business logic between components, directives, and other services within your Angular application.
+
+Here are some key points about services in Angular:
+
+1.Encapsulation of Reusable Functionality:
+
+Services encapsulate functionality that can be reused throughout your application. This can include data manipulation, communication with servers or external APIs, logging, authentication, etc.
+
+2.Singleton Instances:
+
+By default, Angular services are singletons. This means that Angular creates only one instance of a service class and shares it throughout the application. This ensures that any data stored in the service is shared across all components that use it.
+
+3.Injectable:
+
+Angular services are marked with the @Injectable() decorator. This decorator tells Angular's dependency injection system that the class may have its own dependencies and should be injectable into other components or services.
+
+4.Dependency Injection:
+
+Angular's dependency injection system is used to provide services to components and other services that depend on them. Services can be injected into components, directives, or other services by specifying them as constructor parameters.
+
+
+5.Separation of Concerns:
+
+Services help in separating concerns and keeping your codebase organized and maintainable. They promote the principles of modularity and reusability by encapsulating functionality that is not specific to any particular component.
+
+
+6.Business Logic:
+
+Services often contain business logic, such as data manipulation, calculations, or operations that are not related to the presentation layer. This separation of concerns makes components leaner and easier to test.
+
+
+Example:
+Here's a simple example of a service in Angular:
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+  private data: any[] = [];
+
+  constructor() { }
+
+  getData(): any[] {
+    return this.data;
+  }
+
+  addData(item: any): void {
+    this.data.push(item);
+  }
+}
+
+
+In this example, DataService is a simple service that stores and provides data. It has methods to retrieve data (getData) and add new data (addData). It's marked with @Injectable() and provided in the root injector (providedIn: 'root'), making it available application-wide.
+
+
+Summary:
+
+Services in Angular encapsulate reusable functionality.
+
+They are marked with the @Injectable() decorator.
+
+Services are singletons by default.
+
+They promote separation of concerns and maintainability in Angular applications.
+
+Services can be injected into components, directives, and other services using Angular's dependency injection system.
+
+
+Q: is  service a dependency everytime?
+
+
+A: In Angular, a service can be a dependency, but not all services are dependencies. Let's clarify:
+
+Service as a Dependency:
+
+1.Injected into Components: Services are often injected into Angular components or other services as dependencies. This allows components to access the functionality provided by the service.
+
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+  constructor() { }
+
+  // Service functionality...
+}
+
+
+In this example, DataService is injectable and can be injected into components or other services as a dependency.
+
+2.Shared Functionality: Services are used to encapsulate reusable functionality that needs to be shared across multiple parts of an Angular application. Injecting a service into a component allows the component to access and use that functionality.
+
+
+Service Without Being a Dependency:
+
+
+1.Utility Services: Some services may not be injected into other components or services but are used internally within the application. These services perform tasks such as logging, authentication, or data manipulation without being directly exposed as dependencies.
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LoggerService {
+  constructor() { }
+
+  log(message: string): void {
+    console.log(message);
+  }
+}
+
+
+
+2.In this example, LoggerService is a utility service that can be used internally within the application without being injected into components or services.
+
+Summary:
+
+Services in Angular can serve as dependencies when they are injected into components or other services.
+
+However, not all services are dependencies. Some services may provide utility functions or internal functionality without being injected into other parts of the application.
+
+The decision to make a service a dependency depends on whether it needs to be shared and accessed by other parts of the application.
+
+
+
+service ekk hdnne menna mehma 
+
+api comman line eke project foldereke ghnawa menna mehma :
+
+	"ng genearate service serviceName"
+
+methnadi wishesha de thami api service name eka dunnata service eka hduwain passe enamata automa add wenwa anthimt service kiyla 

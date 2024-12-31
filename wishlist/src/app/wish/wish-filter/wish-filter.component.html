@@ -1,0 +1,13 @@
+<div>
+<!-- methna ngModel kiynne twoway databinding scn ekk , e kiynneNgmodel dammama app component class eke e kiynne app component .ts file eke thiyna listfilter ekat input ekn value ekk awama e varible ekt eka assign krnwa e wagema app.component.ts ekedi api nkn hari default agayak deela thiynwa wage scn ekkt agayak dunnoth eka input tag eke value eka widiyt pennum krnwa -->
+            <select
+                class="form-select"
+                [(ngModel)] = "listFilter"  
+                (ngModelChange)="updateFilter($event)" 
+            > <!--methna ngModelChange kiynne event ekk ara click wage , ngModel kiynne ngModel kiynadirective eka  use krla  data binding sidda krla thiyna akarayi methandi , methnadi aphu oya meka blddi ngModel kiyna kalla ain wela gihilla athi. mokd ekn bug ekk enwa fulfilled, unfulfilled , all kiyla filter krddi aluthing wish ekk addd krma refresh nokra eka unfulfilled, fulfilled, all kiyna 3 ekekwatath eka paar watenne nha , ekt hriynna functionlaity eka hdla thiynne component.ts eke -->
+                <option value="0">All</option>
+                <option value="1">Unfulfilled</option>
+                <option value="2">Fulfilled</option>
+        </select> <!-- me select eka wenama component ekkt aran giya e component eka thama oya pahalin thiynne -->
+
+</div>

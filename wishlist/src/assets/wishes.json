@@ -1,0 +1,7 @@
+[
+    {"wishText": "Learn Angular" , "iscomplete": false},
+    {"wishText": "Get coffee" , "iscomplete": true},
+    {"wishText": "find grass that cut it self" , "iscomplete": false},
+    {"wishText": "Get an Apple iphone xs" , "iscomplete": true},
+    {"wishText": "Call mom and tell her happy mothers day" , "iscomplete": false}
+]

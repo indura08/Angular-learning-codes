@@ -1,0 +1,59 @@
+In Angular, ValidatorFn is a type of function used to create custom validators for form controls. It's a TypeScript interface provided by the @angular/forms module.
+
+Explanation in Simpler Terms:
+-----------------------------
+
+1. What is a Validator?
+
+	A validator is a function that checks if the user's input in a form field meets certain conditions. For example, it can check if an input is required, 	if it's a valid email address, or if it meets any other custom criteria.
+
+2.Creating Custom Validators with ValidatorFn:
+
+	Angular provides built-in validators like Validators.required, Validators.email, etc. Sometimes, you need to create custom validation rules specific 	to your application.
+
+	ValidatorFn allows you to create these custom validation functions.
+
+3. How ValidatorFn Works:
+
+	ValidatorFn is a TypeScript interface that defines the structure of a validator function.
+
+	It takes an AbstractControl (representing the form control to be validated) as input and returns either null if the validation passes, or a JavaScript 	object containing validation errors if it fails.
+
+4.Example Usage:
+
+Here's an example of a custom validator function using ValidatorFn:
+
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+
+export function forbiddenNameValidator(forbiddenName: RegExp): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const forbidden = forbiddenName.test(control.value);
+    return forbidden ? { 'forbiddenName': { value: control.value } } : null;
+  };
+}
+
+
+In this example, forbiddenNameValidator is a custom validator function that checks if the input value matches a forbidden pattern defined by the forbiddenName regular expression.
+It returns a ValidatorFn function that Angular can use to validate form controls.
+
+
+5.Using Custom Validators:
+
+	You can use custom validators like any other Angular built-in validator.
+
+	You add them to the list of validators when you define your form controls. For example:
+
+
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+constructor(private fb: FormBuilder) {
+  this.myForm = this.fb.group({
+    username: ['', [Validators.required, forbiddenNameValidator(/admin/)]]
+  });
+}
+
+Here, forbiddenNameValidator(/admin/) adds the custom validator to the username form control, preventing users from entering "admin" as their username.
+
+Summary:
+ValidatorFn is a TypeScript interface used to create custom validator functions in Angular. It allows you to define specific validation rules tailored to your application's requirements and integrate them seamlessly into your forms for user input validation.
+

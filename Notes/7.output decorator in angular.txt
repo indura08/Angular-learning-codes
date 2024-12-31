@@ -1,0 +1,28 @@
+hodta mthk thiygnna with output : information flows from child to parent
+
+Imagine you have two people, a parent (like a boss) and a child (like an employee). They need to communicate with each other. The parent wants to know when something happens in the child component, and the child wants to tell the parent when it happens.
+
+Now, in Angular, the @Output decorator acts like a messenger. It allows the child component to send messages (events) to the parent component.
+
+Here's how it works:
+
+1.Child Sends Messages (Events) to Parent:
+The child component has something important to share with the parent.
+So, it uses the @Output decorator to create a special spot where it can send these messages.
+
+2.Parent Listens for Messages (Events):
+The parent component is always ready to listen for any messages from the child.
+It sets up a listening post using the child's @Output spot.
+
+3.Child Sends a Message (Event):
+When the child needs to tell the parent something (like a button click or any other action), it sends a message (emits an event) through the @Output spot.
+
+4.Parent Reacts to the Message (Event):
+As soon as the parent receives the message (event), it reacts accordingly. It might update its own data, trigger other actions, or do whatever it needs to do.
+
+So, think of @Output as a way for the child component to communicate important updates or actions to its parent component. It's like passing notes between a manager (parent) and an employee (child) to keep everyone informed and coordinated.
+
+
+Q: so output is like telling parent component that child component output something? when ever it outputs something?
+
+A: Exactly! The @Output decorator in Angular allows the child component to notify the parent component whenever something significant happens or whenever it "outputs" something. This could be events like button clicks, form submissions, or any other action that the child component wants to inform the parent about. So, whenever the child component emits an event, it's like saying, "Hey, parent component, something important just happened over here!" And the parent component, listening for these events, can then react accordingly.

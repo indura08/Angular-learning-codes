@@ -1,0 +1,130 @@
+The ngSubmit event in Angular is a directive that binds to the submit event of a form. It's typically used to call a method in your component when the user submits a form. This event is particularly useful for handling form submissions in a more Angular-specific way, allowing you to take advantage of Angular's data binding and validation features.
+
+Here's a detailed overview:
+
+Basic Usage
+-------------
+When you have a form in Angular and you want to handle its submission, you can use the ngSubmit directive to bind the form's submit event to a method in your component.
+
+Example
+
+<form (ngSubmit)="onSubmit()" #myForm="ngForm">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" ngModel required>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" ngModel required>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+
+
+In the component:
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-contact',
+  templateUrl: './contact.component.html'
+})
+export class ContactComponent {
+  onSubmit() {
+    console.log('Form submitted!');
+  }
+}
+
+Explanation
+Form Element: The <form> element has the (ngSubmit) directive which listens for the form's submit event.
+Event Binding: The (ngSubmit)="onSubmit()" part binds the form's submit event to the onSubmit method in the component.
+Template Reference Variable: The #myForm="ngForm" part creates a template reference variable for the form, which can be used for form validation and other tasks.
+ngModel Directive: The ngModel directive is used on the input elements to bind the form controls to the component properties.
+
+
+Handling Form Data
+---------------------
+To handle the form data, you can access the form's value in the onSubmit method:
+
+onSubmit(form: NgForm) {
+  console.log(form.value);
+}
+
+Validation
+-----------
+Angular's ngSubmit works well with Angular's form validation. You can check the form's validity before processing the submission:
+
+onSubmit(form: NgForm) {
+  if (form.valid) {
+    console.log('Form data:', form.value);
+  } else {
+    console.log('Form is invalid');
+  }
+}
+
+
+Benefits
+--------
+Angular Integration: Seamlessly integrates with Angular's form validation and data binding features.
+Cleaner Code: Keeps your form submission logic within the Angular framework, avoiding direct manipulation of the DOM.
+Validation: Easy to handle form validation and display validation messages.
+
+
+Example with Reactive Forms
+--------------------------
+For reactive forms, the approach is slightly different. You would use FormGroup and FormBuilder:
+
+
+Template:
+
+
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name">
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email">
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+
+
+Component
+
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-contact',
+  templateUrl: './contact.component.html'
+})
+export class ContactComponent implements OnInit {
+  contactForm!: FormGroup;
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.contactForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
+
+  onSubmit() {
+    if (this.contactForm.valid) {
+      console.log('Form data:', this.contactForm.value);
+    } else {
+      console.log('Form is invalid');
+    }
+  }
+}
+
+
+Conclusion
+The ngSubmit event in Angular is a powerful directive for handling form submissions. It leverages Angular's form binding and validation features, making it easier to manage form data and ensure form integrity. Whether you're using template-driven or reactive forms, ngSubmit helps you keep your form handling code clean and efficient.

@@ -1,0 +1,22 @@
+1.angular project ekk patrn ganna kalin angular cli eka install krnna one eka globally karaham hari ekat one krnne menna me code eki
+
+	"npm install @angular/cli --global":
+
+mehma globally install kalama eken denwa command ekk ng kiyla , eka one ape project eka krgena yaddi apita 
+
+
+2.eta passe apita aluth project ekk hdnna nm menna me code eka ghnna one 
+
+	"ng new wishlist" : wishlist kiynne project eke namai
+
+eta passe oya code eka guuwamaham prshna kiyapayk ahnw e tikat urra deela hariyt project eka configure krgnnai thiynne 
+
+
+3. project eka server ekeka run krnna e kiynne project eka npom run dev ghla react node-express run krnwa wage run krnna nm ghnna one menna me code eka 
+
+	"ng serve"
+
+4.angular project ekk patn gaddi by default un git repo eek initiat krnwa , eka magaharagnna nm menna me command ek ghnna one
+
+
+	" ng new your-project-name --skip-git "

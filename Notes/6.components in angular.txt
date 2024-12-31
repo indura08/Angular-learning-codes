@@ -1,0 +1,68 @@
+In Angular, components are the basic building blocks of the user interface (UI). They are responsible for controlling a part of the UI and encapsulating its functionality, presentation, and behavior. Each component consists of three main parts:
+
+1.Component Class: This is a TypeScript class that contains the code for the component's behavior. It usually includes properties and methods that define the component's state and behavior.
+
+2.Component Template: This is an HTML file that defines the component's UI structure. It contains the HTML markup along with Angular-specific syntax and directives like ngIf, ngFor, and property binding.
+
+3.Component Metadata: This is a TypeScript decorator (@Component) that provides metadata about the component, such as its selector, template, styles, and other configurations. The decorator allows Angular to identify the class as a component and configure it accordingly.
+
+Here's an example of a simple Angular component:
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-example', // Component selector
+  templateUrl: './example.component.html', // Component template URL
+  styleUrls: ['./example.component.css'] // Component styles URL
+})
+export class ExampleComponent {
+  // Component properties and methods go here
+}
+
+
+In this example:
+
+The @Component decorator specifies the selector (app-example), template URL (./example.component.html), and styles URL (./example.component.css) for the component.
+The ExampleComponent class is the component class where you define properties and methods.
+The templateUrl points to the HTML file where you define the component's UI structure.
+The styleUrls points to the CSS file(s) where you define styles for the component.
+
+Here's an example of a corresponding template (example.component.html):
+
+
+<div>
+  <h1>Hello, {{ name }}</h1>
+  <button (click)="sayHello()">Say Hello</button>
+</div>
+
+
+In this template:
+
+We use Angular interpolation ({{ name }}) to display the value of the name property from the component class.
+We use event binding ((click)="sayHello()") to bind the click event of the button to the sayHello() method in the component class.
+Components can be nested within other components to create complex UIs, and they communicate with each other using input properties, output properties, and services.
+
+
+-----------------------------------------------------------------------
+
+angular compnent ekk apita generate krgnna puluwan menna me command eka ghla :
+
+	"ng generate component componanetName"
+
+"ng generate component components/YourComponentName" = methna components kiyna folder ekt thami component ek watenne hdna 
+
+
+1.component eka hdnna ara uda thiyna command eka ghla iwar wlea component eka hdunain passe eka danna balaporottu wena loku component ekakta import krla e loku component eke imports wala danna one adlal component ka api import kala eka pennana kiyla
+
+
+
+
+
+
+
+
+
+
+
+
+

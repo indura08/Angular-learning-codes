@@ -1,0 +1,11 @@
+<form>
+    <div>
+        <label>Wish</label>
+        <input type="text" name ="wish" [(ngModel)]="newWishText">
+    </div>
+    <div>
+        <button 
+            type = "submit"
+            (click)="$event.preventDefault(); addNewWish()" class="btn btn-success mt-2">Add wish</button>
+    </div>
+</form> 

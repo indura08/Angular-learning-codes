@@ -1,0 +1,23 @@
+ <div *ngIf = "visibleItems.length === 0 ; else showItems">
+        There are no wishes available to display
+    </div>
+
+    <ng-template #showItems>
+        <ul class = "wishlist"> <!--samnyen ngIf ekat ngElse kiyla ekk nha -->
+            <li *ngFor="let item of visibleItems ; index as ii">
+                <div class = "form-check">
+                    <label class = "form-check-label">
+                        <input 
+                            class="checkbox" 
+                            type = "checkbox"
+                            [checked] = "item.isComplete" 
+                            [attr.data-index] = "ii"
+                            (click) = "toggleItem(item)"> <!--methna attr. kiyla eta passe dela thiyna text eka awilla api aluthin hapu attribute ekk , e wage attr. kalla daala apita puluwan aluthin attributes hdnna -->        
+                            <!--emthana [checked] kiyla liyla thiynne angular wala mokak hai object ekaka value ekath ekka html functionlaity ekk one nm html attribute ekath ekka angula objct eke valus bind krnne menne me widiyt nisai--> 
+                        {{item.wishText}}
+                    </label>
+                </div>
+            </li>
+                
+        </ul>
+    </ng-template>

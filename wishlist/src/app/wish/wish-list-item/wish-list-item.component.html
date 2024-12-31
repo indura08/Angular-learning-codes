@@ -1,0 +1,16 @@
+<li>
+    <div class = "form-check">
+        <label class = "form-check-label" [ngClass]="cssClass"> <!--methna ngClass kiynne lable property eke class kiyna ekatam thami aththatama, class kiyla api css class name denne anna e wage -->
+            <input 
+                class="checkbox" 
+                type = "checkbox"
+                [checked] = "wish.isComplete" 
+                (click) = "togglefullfilled()"> <!--methna attr. kiyla eta passe dela thiyna text eka awilla api aluthin hapu attribute ekk , e wage attr. kalla daala apita puluwan aluthin attributes hdnna -->        
+                <!--emthana [checked] kiyla liyla thiynne angular wala mokak hai object ekaka value ekath ekka html functionlaity ekk one nm html attribute ekath ekka angula objct eke valus bind krnne menne me widiyt nisai--> 
+            {{wish.wishText}}
+        </label>
+
+        <button types ="button" class="btn btn-danger" (click)="removeWish()">X</button>
+        
+    </div>
+</li>

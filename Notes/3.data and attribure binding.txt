@@ -1,0 +1,92 @@
+In Angular, data binding is a fundamental mechanism that allows you to connect your component's data (properties) to the HTML elements in your template. This creates a dynamic relationship where changes in your data automatically update the UI, and vice versa. Here's a breakdown of binding data to properties and attributes in Angular:
+
+
+Property Binding:
+-----------------
+
+Purpose: Used to bind data to the properties of HTML elements or directives.
+Syntax: <element [property]="expression">
+
+
+property: The name of the property you want to bind to (e.g., disabled, src, style).
+expression: An expression that evaluates to the value you want to assign to the property.
+
+<button [disabled]="isDisabled">Click me</button>
+
+This binds the isDisabled property of the component to the disabled property of the button element. If isDisabled is true, the button will be disabled.
+
+Attribute Binding:
+------------------
+
+Purpose: Used to bind data to the attributes of HTML elements.
+Syntax: <element [attr.attribute]="expression">
+
+attribute: The name of the attribute you want to bind to (e.g., href, class, data-*).
+expression: An expression that evaluates to the value you want to assign to the attribute.
+
+Example: <img [attr.src]="imageUrl">
+
+This binds the imageUrl property of the component to the src attribute of the image element. The image displayed will change based on the value of imageUrl.
+
+Key Differences:
+-----------------
+
+Target: Property binding targets the actual properties of HTML elements or directives, while attribute binding targets their attributes.
+Dynamic Updates: Both types of binding allow for dynamic updates based on changes in your component's data.
+Use Cases:
+Property Binding: Preferred for most cases as it directly manipulates element behavior.
+Attribute Binding: Often used for:
+Setting attributes that are not directly supported by DOM elements (e.g., data-* attributes).
+Dynamically applying multiple CSS classes based on conditions.
+Additional Considerations:
+
+Interpolation: While not technically data binding, interpolation using double curly braces ({{ expression }}) is a common way to directly embed data within the template.
+Event Binding: Angular also allows you to bind events (e.g., clicks, key presses) to component methods for user interaction.
+By understanding property and attribute binding, you can effectively connect your component's data to the UI in your Angular applications, creating dynamic and responsive user interfaces.
+
+
+
+the gist between property and attribute binding in angular :
+----------------------------------------------------------------
+
+Q: with data binidn in angular we can bind to html tag properties with values of cpmponent class but we cant  create new properties with angular data binding , but on the other hand we can create new attributes to a html tag using attr keyword ?
+
+
+A:Yes, you've got the gist of it!
+
+With data binding in Angular:
+
+1.Binding to HTML Tag Properties: You can bind data from the component class to HTML element properties using property binding. This allows you to dynamically update the properties of HTML elements based on the component's data.
+
+	example : <img [src]="imageUrl">
+
+	In this example, [src] is a property binding that binds the src property of the <img> tag to the imageUrl property of the component class.
+
+
+2.Creating New Attributes: While you cannot directly create new properties on HTML elements using Angular data binding, you can dynamically add new attributes to HTML elements using attribute binding.
+
+	<div [attr.data-custom]="customData">
+
+In this example, [attr.data-custom] is an attribute binding that dynamically adds a data-custom attribute to the <div> element, and its value is bound to the customData property of the component class.
+
+so ttatama mekn kiynne apita ttaributes eka eka jathiyen hdnna bha , ehma hdpu custom attributes thiynwa ewa apita use krnna puluwan 
+
+custom attributes kiwwama attributes patn ganna widya kalin define krla thiynwa eka passe apita kamathi namk denna puluwan. e wage hdpu custom atrributes list ekk thami pahal thiynne :
+
+
+	1.[data-*]: Attributes prefixed with data- are often used to store custom data associated with an element. For example, data-index, data-value, etc.
+
+	2.[app-*]: Attributes prefixed with app- are commonly used to interact with Angular components and directives. For instance, app-custom-directive, app-custom-property, etc.
+
+	3.[my-*]: Developers often use prefixes like my- to create custom attributes specific to their application's needs. For example, my-custom-attribute, my-data, etc.
+
+	4.[ng-*]: Although not recommended, some developers use the ng- prefix for their custom attributes, but this can lead to confusion as ng- is typically reserved for Angular's built-in directives.
+
+	5.[aria-*]: Attributes prefixed with aria- are used for defining accessible properties in HTML, providing additional information to assistive technologies. For example, aria-label, aria-describedby, etc.
+
+
+what are custom attributes: These are attributes you define yourself, starting with data- followed by your chosen name. They don't have a predefined meaning in HTML and rely on external tools or frameworks to interpret them.
+
+
+
+

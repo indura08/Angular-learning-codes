@@ -1,0 +1,51 @@
+<br><br>
+<hr>
+<h1>Contact Form </h1>
+<form [formGroup]="contactForm" (ngSubmit) = "$event.preventDefault(); submitForm()">
+    <div class = "">
+        <label>Your name</label>
+        <input type = "text" formControlName="senderName">
+        <div *ngIf="contactForm.get('senderName')?.invalid && (contactForm.get('senderName')?.dirty || contactForm.get('senderName')?.touched) ">
+            <small *ngIf="contactForm.get('senderEmail')?.hasError('required')"><font color="Red">This feild is required</font></small> <!--methndi kiynne me hasError function ekn apita check krnna puluwan mona validation method eka ullanganaya welada error eka enne kiyla , hasError method ekat pass krnna one validation name eka, methnadi nm required validation , pahala eke nm email validation, anna e wage  -->
+            
+        </div>
+
+        <br><br><br>
+    </div>
+
+    <div>
+        <label>Your email address</label>
+        <input type = "text" formControlName="senderEmail">
+
+        <div *ngIf="contactForm.get('senderEmail')?.invalid && (contactForm.get('senderEmail')?.dirty || contactForm.get('senderEmail')?.touched) "> <!----methna me warahan athule or ekak ekkala daala thiynne : user input box ekt muuth athulathkrla nattnm invlaid txt eka nopennwa inna one widiyt me functonality eka hdnnai-- >
+            <!--methna me ? mark eka daala thiynne null d anadd kiyla check krna scn ekai , meka typescript walla thibba kallak mn hithnne , poddk me code eka aaye evaluate krddi typescript note code ekath erefer kra kra blala yanna -->
+            <small *ngIf="contactForm.get('senderEmail')?.hasError('required')"><font color="Red">This feild is required</font></small> <!--methndi kiynne me hasError function ekn apita check krnna puluwan mona validation method eka ullanganaya welada error eka enne kiyla , hasError method ekat pass krnna one validation name eka, methnadi nm required validation , pahala eke nm email validation, anna e wage  -->
+            <small *ngIf="contactForm.get('senderEmail')?.hasError('email')"><font color="Red">Please provide a valid email</font></small>
+            <small *ngIf="contactForm.get('senderEmail')?.hasError('invalidEmailDomain')"><font color="Red">Please provider is not allowed</font></small>
+            
+        </div>
+
+        <br><br><br>
+        
+        
+    
+    </div>
+
+    <div>
+        <label>Message</label>
+        <textarea rows="3" formControlName="senderMessage"></textarea><br>
+
+        <div *ngIf="contactForm.get('senderMessage')?.invalid && (contactForm.get('senderMessage')?.dirty || contactForm.get('senderMessage')?.touched) ">
+            <small *ngIf="contactForm.get('senderMessage')?.hasError('minlength')"><font color="Red">This feild is need to have at least 10 character</font></small> <!--methndi kiynne me hasError function ekn apita check krnna puluwan mona validation method eka ullanganaya welada error eka enne kiyla , hasError method ekat pass krnna one validation name eka, methnadi nm required validation , pahala eke nm email validation, anna e wage  -->
+            
+        </div>
+    </div>
+
+    <div>
+        <button type = "submit" [disabled]="contactForm.invalid">Submit</button>
+        <!--meke me disbaled property ekn kiynne buton eka fomr data valid nattnm disable krnna kiyla/ meka property binding walt thwa example ekk , hodt blnna aye code eka evaluate krddi-->
+    </div>
+
+
+    
+</form>

@@ -1,0 +1,133 @@
+In Angular's HttpClient, the options parameter allows you to configure various aspects of an HTTP request. This parameter can be used with all HTTP methods (GET, POST, PUT, DELETE, PATCH, etc.). Here are the main properties you can set within the options parameter:
+
+1.Headers: Custom headers for the request.
+
+2.Params: Query parameters for the request.
+
+3.Observe: Specifies what to return from the request (body, response, or events).
+
+4.ResponseType: The type of response to expect (json, text, blob, or arraybuffer).
+
+5.WithCredentials: Indicates whether or not cross-site Access-Control requests should be made using credentials such as cookies, authorization headers or TLS client certificates.
+
+6.Context: Allows attaching additional context to the request.
+
+7.ReportProgress: Whether to report progress events (useful for file uploads and downloads).
+
+
+
+Here's a detailed look at each of these options with examples:
+---------------------------------------------------------------
+1.Headers :
+
+The headers option allows you to send custom headers with your request.
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+const headers = new HttpHeaders({
+  'Content-Type': 'application/json',
+  'Authorization': 'Bearer my-token'
+});
+
+this.httpClient.get('https://api.example.com/data', { headers }).subscribe(response => {
+  console.log(response);
+});
+
+
+2.params:
+
+The params option allows you to send query parameters with your request.
+
+import { HttpClient, HttpParams } from '@angular/common/http';
+
+const params = new HttpParams()
+  .set('page', '1')
+  .set('pageSize', '10');
+
+this.httpClient.get('https://api.example.com/data', { params }).subscribe(response => {
+  console.log(response);
+});
+
+
+3.observe:
+
+The observe option specifies what to return from the request: the body (body), the full response (response), or the events (events).
+
+this.httpClient.get('https://api.example.com/data', { observe: 'response' }).subscribe(response => {
+  console.log(response);
+});
+
+
+4.ResponseType:
+
+The responseType option specifies the type of response expected: json, text, blob, or arraybuffer.
+
+
+this.httpClient.get('https://api.example.com/data', { responseType: 'text' }).subscribe(response => {
+  console.log(response);
+});
+
+
+5.WithCredentials
+The withCredentials option indicates whether or not cross-site Access-Control requests should be made using credentials such as cookies, authorization headers or TLS client certificates.
+
+this.httpClient.get('https://api.example.com/data', { withCredentials: true }).subscribe(response => {
+  console.log(response);
+});
+
+
+6. Context
+The context option allows attaching additional context to the request, which can be useful for interceptors.
+
+import { HttpContext, HttpContextToken } from '@angular/common/http';
+
+const CONTEXT_KEY = new HttpContextToken<boolean>(() => false);
+
+const context = new HttpContext().set(CONTEXT_KEY, true);
+
+this.httpClient.get('https://api.example.com/data', { context }).subscribe(response => {
+  console.log(response);
+});
+
+
+
+
+7.ReportProgress
+The reportProgress option indicates whether to report progress events (useful for file uploads and downloads).
+
+this.httpClient.post('https://api.example.com/upload', formData, {
+  reportProgress: true,
+  observe: 'events'
+}).subscribe(event => {
+  // Handle progress event here
+  console.log(event);
+});
+
+Example Combining Multiple Options
+You can combine multiple options in a single request:
+
+
+import { HttpClient, HttpHeaders, HttpParams, HttpContext, HttpContextToken } from '@angular/common/http';
+
+const headers = new HttpHeaders().set('Authorization', 'Bearer my-token');
+const params = new HttpParams().set('page', '1').set('pageSize', '10');
+const context = new HttpContext().set(CONTEXT_KEY, true);
+
+this.httpClient.get('https://api.example.com/data', {
+  headers,
+  params,
+  observe: 'response',
+  responseType: 'json',
+  withCredentials: true,
+  context,
+  reportProgress: true
+}).subscribe(response => {
+  console.log(response);
+});
+
+
+
+Summary
+In Angular, the HttpClient service provides a flexible API for making HTTP requests. The options parameter allows you to configure these requests with custom headers, query parameters, response types, and more. By using these options effectively, you can tailor your HTTP requests to meet the specific needs of your application.
+
+

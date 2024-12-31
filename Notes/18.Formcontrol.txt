@@ -1,0 +1,121 @@
+FormControl is part of Angular's Reactive Forms module, which allows for a more powerful and flexible way to build forms compared to template-driven forms. Reactive forms are code-driven, meaning you define and manage the form structure and validation logic in the component class, rather than the template.
+
+Importing FormControl
+----------------------
+
+To use FormControl, you need to import it from @angular/forms:
+
+import { FormControl } from '@angular/forms';
+
+
+Creating a FormControl
+----------------------
+You can create an instance of FormControl by instantiating it directly:
+
+const control = new FormControl('initial value');
+
+
+Properties
+-----------
+
+value: The current value of the control.
+
+status: The validation status of the control, which can be VALID, INVALID, PENDING, or DISABLED.
+
+errors: The validation errors, if any, associated with the control.
+
+pristine: true if the control has not been changed by the user, false otherwise.
+
+dirty: true if the control has been changed by the user, false otherwise.
+
+touched: true if the control has been blurred (lost focus), false otherwise.
+
+untouched: true if the control has not been blurred, false otherwise.
+
+
+Methods
+-------
+
+setValue(value: any, options?: { onlySelf?: boolean, emitEvent?: boolean }): Sets a new value for the control.
+
+patchValue(value: any, options?: { onlySelf?: boolean, emitEvent?: boolean }): Patches a new value for the control (useful for setting a part of a complex object).
+
+reset(value?: any, options?: { onlySelf?: boolean, emitEvent?: boolean }): Resets the control to an initial value or a specified value.
+
+markAsTouched(options?: { onlySelf?: boolean }): Marks the control as touched.
+
+markAsUntouched(options?: { onlySelf?: boolean }): Marks the control as untouched.
+
+markAsDirty(options?: { onlySelf?: boolean }): Marks the control as dirty.
+
+markAsPristine(options?: { onlySelf?: boolean }): Marks the control as pristine.
+
+disable(options?: { onlySelf?: boolean, emitEvent?: boolean }): Disables the control.
+
+enable(options?: { onlySelf?: boolean, emitEvent?: boolean }): Enables the control.
+
+hasError(errorCode: string, path?: string): Checks if a specific error is present on the control.
+
+getError(errorCode: string, path?: string): Retrieves a specific error from the control
+
+
+Validation
+-----------
+
+You can pass an array of validators to a FormControl:
+
+import { Validators } from '@angular/forms';
+
+const control = new FormControl('', [
+  Validators.required,
+  Validators.minLength(4)
+]);
+
+
+Example Usage in a Component
+-----------------------------
+
+Here's a complete example demonstrating how to use FormControl within a component:
+
+
+import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-example',
+  template: `
+    <form>
+      <label for="name">Name:</label>
+      <input id="name" [formControl]="nameControl">
+      <div *ngIf="nameControl.invalid && (nameControl.dirty || nameControl.touched)">
+        <div *ngIf="nameControl.errors?.required">Name is required.</div>
+        <div *ngIf="nameControl.errors?.minlength">Name must be at least 4 characters long.</div>
+      </div>
+      <button (click)="submit()">Submit</button>
+    </form>
+  `
+})
+export class ExampleComponent {
+  nameControl = new FormControl('', [Validators.required, Validators.minLength(4)]);
+
+  submit() {
+    if (this.nameControl.valid) {
+      console.log('Form Value:', this.nameControl.value);
+    } else {
+      console.log('Form Invalid');
+    }
+  }
+}
+
+
+Key Points
+----------
+Reactive Forms: FormControl is used in reactive forms, which are defined in the component class and managed through code.
+
+Validation: You can easily add and manage validation logic with FormControl.
+
+Control State: FormControl provides properties and methods to track and control the state of a form input.
+
+Flexibility: It allows for complex form structures and dynamic form controls.
+
+By using FormControl, you gain full control over the form inputs, their validation, and state management, making it a powerful tool for building robust forms in Angular applications.

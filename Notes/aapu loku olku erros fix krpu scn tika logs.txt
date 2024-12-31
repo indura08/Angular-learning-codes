@@ -1,0 +1,12 @@
+1. apu lokuma error ekak thami httpclient wishservice kiyla hdpu service eke use krddi apu error eka : error eka widiyt awe :  NullInjectorError: No provider for _HttpClient! 
+
+	fix kale mehma: app.config.ts file ekt giya , ethanin menna me code eka ghla provide http client eka import krgtta
+
+		"import { provideHttpClient } from '@angular/common/http"
+
+	eta passe eka providers yatatahata add kala function ekak widiyt invoke krla menna mehm: 
+
+		"provideHttpClient()"
+
+
+

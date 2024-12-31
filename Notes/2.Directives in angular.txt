@@ -1,0 +1,26 @@
+In Angular, directives are special markers on a DOM element that tell Angular to do something to that element or its children. They add behavior to elements in the DOM.
+
+Angular has three types of directives:
+
+1.Component Directives: Components are the most common type of directive in Angular. They are used to create reusable UI components with their own templates, styles, and behavior. Components are directives with a template. They are the most common and powerful type of directive in Angular. Components have their own view, data, behavior, and encapsulation.
+
+example : 
+
+@Component({
+  selector: 'app-my-component',
+  template: '<p>This is my component!</p>'
+})
+export class MyComponent {}
+
+
+
+2.Attribute Directives: Attribute directives modify the behavior or appearance of an existing element. They are used to change the behavior of a component, such as adding or removing attributes, manipulating the DOM, or applying styles. Examples include ngClass, ngStyle, and ngModel. Attribute Directives: Attribute directives change the appearance or behavior of an element. They are applied to elements as attributes. Angular provides some built-in attribute directives like ngClass and ngStyle.
+
+
+example: <div [ngClass]="{ 'class-name': condition }">...</div>
+
+3.Structural Directives: Structural directives change the structure of the DOM by adding or removing elements. They are used to conditionally display elements, repeat elements based on a collection, or alter the layout of the DOM. Examples include ngIf, ngFor, and ngSwitch. tructural Directives: Structural directives change the structure of the DOM by adding, removing, or manipulating elements. They are applied to elements as attributes, usually starting with an asterisk (*) notation. Examples include ngIf, ngFor, and ngSwitch.
+
+example:
+
+<div *ngIf="condition">...</div>

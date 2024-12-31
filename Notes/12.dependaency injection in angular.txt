@@ -1,0 +1,92 @@
+Think of Dependency Injection (DI) as a way for a class to declare its dependencies instead of creating them internally. Angular's DI system then takes care of providing those dependencies when the class is instantiated.
+
+Why Use Dependency Injection?
+
+1.Decoupling: It helps to decouple components, making them easier to maintain and test.
+
+2.Reusability: Components can be reused more easily because they depend on abstractions rather than concrete implementations.
+
+3.Testability: Components can be tested more effectively by injecting mock or stub dependencies.
+
+
+
+How Does it Work?
+
+1.Declaration: You declare a dependency in a class's constructor.
+
+2.Injection: Angular's DI system provides the required dependency when the class is instantiated.
+
+
+Example:
+Let's say we have a UserService class that depends on an HttpClient service to make HTTP requests.
+
+
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+
+  constructor(private http: HttpClient) { }
+
+  getUsers() {
+    return this.http.get('/api/users');
+  }
+}
+
+
+In the UserService constructor, HttpClient is declared as a dependency.
+
+Injection:
+
+import { Component, OnInit } from '@angular/core';
+import { UserService } from './user.service';
+
+@Component({
+  selector: 'app-users',
+  template: `
+    <ul>
+      <li *ngFor="let user of users">{{ user.name }}</li>
+    </ul>
+  `
+})
+export class UsersComponent implements OnInit {
+  users: any[];
+
+  constructor(private userService: UserService) { }
+
+  ngOnInit() {
+    this.userService.getUsers().subscribe((users: any[]) => {
+      this.users = users;
+    });
+  }
+}
+
+
+In the UsersComponent, UserService is injected through its constructor. Angular's DI system automatically provides an instance of UserService when UsersComponent is created.
+
+
+Benefits
+
+1.Modularity: Classes become more modular and easier to maintain.
+
+2.Testability: Dependencies can be easily mocked for unit testing.
+
+3.Single Responsibility Principle (SRP): Classes focus on doing one thing well, relying on others to handle their dependencies.
+
+
+In essence, Dependency Injection is a powerful design pattern that Angular leverages to manage dependencies between different parts of your application, making it more modular, maintainable, and testable.
+
+Dependancy injection krnna puuwan widi dekek thiynwa
+
+ekak thami dependancy eka app componnen eke @Component annotation eke yatathe thiyna kalla athule liynwa "providers: [evetservice eke nama e kiynne dependency eke nama]" widiyt
+
+dewani eka thami dependency class eke api dnwane "@Injectable()" kila ekak , eke warahananahtule thaw objcet ekk denwa menna me wagei eka liynne : "@injectable({providedIn:'root'})" kiyla, methandi menna me wage dependandy injection eka liynwa nm uda krame wage paranet class eke provided eka athule mukuth liynna one nha . methan root wage denna puluwan thawa widithiynwa. root ekatath therumak thiynwa 
+
+
+ 
+
+
+

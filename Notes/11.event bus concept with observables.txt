@@ -1,0 +1,84 @@
+In Angular, an event bus is a way to facilitate communication between different parts of your application. It's like a centralized hub where components can emit events and other components can listen for those events.
+
+here is how it can be broken down
+
+1.Emitting Events: Components can emit events when something happens, such as a button click or data being updated. They send these events to the event bus, specifying what type of event it is and optionally providing additional data.
+
+2.Listening for Events: Other components that are interested in these events can subscribe to the event bus. They specify which type of events they want to listen for. When an event of that type is emitted, the event bus notifies all subscribed components, passing along any additional data.
+
+3.Handling Events: When a component receives an event from the event bus, it can take action based on the event type and data. For example, it might update its own state, trigger a method, or modify its UI.
+
+example: 
+
+
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class EventBusService {
+  private eventBus = new Subject<any>();
+
+  emitEvent(eventType: string, data?: any) {
+    this.eventBus.next({ type: eventType, data: data });
+  }
+
+  getEvent(eventType: string) {
+    return this.eventBus.asObservable().filter(event => event.type === eventType);
+  }
+}
+
+In this example, we create an EventBusService that acts as our event bus. It has methods to emit events (emitEvent) and to listen for events (getEvent). Other components can inject this service and use it to communicate with each other.
+
+import { Component, OnInit } from '@angular/core';
+import { EventBusService } from '../event-bus.service';
+
+@Component({
+  selector: 'app-child',
+  templateUrl: './child.component.html',
+  styleUrls: ['./child.component.css']
+})
+export class ChildComponent implements OnInit {
+
+  constructor(private eventBusService: EventBusService) { }
+
+  ngOnInit() {
+  }
+
+  handleClick() {
+    this.eventBusService.emitEvent('buttonClicked', { message: 'Button was clicked!' });
+  }
+}
+
+
+In this component, we emit an event when a button is clicked. We use the EventBusService to emit the event with a type of 'buttonClicked' and some additional data.
+
+
+import { Component, OnInit } from '@angular/core';
+import { EventBusService } from '../event-bus.service';
+
+@Component({
+  selector: 'app-parent',
+  templateUrl: './parent.component.html',
+  styleUrls: ['./parent.component.css']
+})
+export class ParentComponent implements OnInit {
+
+  constructor(private eventBusService: EventBusService) { }
+
+  ngOnInit() {
+    this.eventBusService.getEvent('buttonClicked').subscribe(event => {
+      console.log('Button was clicked with message:', event.data.message);
+    });
+  }
+
+}
+
+
+In this component, we listen for the 'buttonClicked' event using the EventBusService. When the event is emitted, we log the message to the console.
+
+This way, the child component emits an event, and the parent component listens for it, allowing them to communicate without being directly connected. This is the essence of the event bus pattern in Angular.
+
+
+

@@ -1,0 +1,104 @@
+An Event Emitter in Angular is a powerful mechanism that enables components to communicate with each other. It acts as a messenger, allowing a child component to send signals or data to its parent component. This communication happens without directly manipulating the parent component's properties, promoting loose coupling and better code organization.
+
+Here's a breakdown of Event Emitters in Angular:
+
+Core Functionality:
+
+Event Emitters as Messengers: Imagine a child component has information or actions that need to be communicated to the parent component. The event emitter acts as a messenger, carrying the message (data) from the child to the parent.
+
+Data Transmission (Optional): You can optionally include data along with the event being emitted. This data can be anything from simple strings to complex objects.
+
+Implementation:
+
+1.Creating an Event Emitter: In the child component, use the @Output() decorator to create an event emitter property. This decorator marks the property as a way for data to flow from the child to the parent.
+You can also specify the type of data the event emitter will handle (e.g., EventEmitter<string> for strings).
+
+2.Emitting Events:
+
+The .emit() method is used on the event emitter property to send the signal or data. It triggers the event listeners in the parent component that are waiting for this specific event.
+
+3.Listening for Events:
+
+In the parent component's template, use event binding ((eventName)) to listen for events emitted by the child component.
+Inside the event binding expression, specify a method in the parent component that will be called when the event is emitted. This method will receive the data (if any) that was passed along with the event.
+
+Benefits of Event Emitters:
+
+Loose Coupling: By using event emitters, child components don't directly access parent properties. This makes the code more maintainable and reusable, as components become less dependent on each other's internal implementation details.
+
+Organized Communication: Event emitters provide a clear and structured way to define and handle communication between components. They act as designated channels for messages, improving code readability.
+
+
+example : child.componnt.ts
+
+import { Component, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template: `
+    <button (click)="emitEvent()">Send Data</button>
+  `
+})
+export class ChildComponent {
+  @Output() someEvent = new EventEmitter<string>();
+
+  emitEvent() {
+    this.someEvent.emit('Data from Child Component');
+  }
+}
+
+
+parent.component.ts : 
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-parent',
+  template: `
+    <app-child (someEvent)="onEvent($event)"></app-child>
+  `
+})
+export class ParentComponent {
+  onEvent(message: string) {
+    console.log('Received message from child:', message);
+  }
+}
+
+.emit
+-------
+
+In Angular, .emit is a method associated with Angular's EventEmitter class. It's used to emit custom events from a child component to a parent component. This mechanism facilitates communication between components without directly manipulating the parent component's properties.
+
+Event Emitters:
+
+Event emitters act as messengers between components.
+In a child component, you can create an event emitter using the @Output() decorator. This creates a property on the child component class that can be used to emit events.
+
+Emitting Events:
+
+The .emit() method is used on the event emitter property to send a signal or data to the parent component.
+You can optionally pass data as an argument to .emit(). This data will be received by the event listener in the parent component.
+
+
+Listening for Events:
+
+In the parent component's template, you can use event binding ((eventName)) to listen for events emitted by the child component.
+Inside the event binding expression, you can specify a method in the parent component that will be called when the event is emitted. This method will receive the data (if any) that was passed along with the event.
+
+
+Benefits of Event Emitters:
+
+Promote loose coupling between components: Child components don't directly access parent component properties, making the code more maintainable and reusable.
+Improve code organization: Event emitters provide a clear way to define and handle communication between components.
+Here's a simplified example to illustrate the concept:
+
+
+
+
+
+
+
+
+
+
+

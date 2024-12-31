@@ -1,0 +1,46 @@
+Angular Routes
+--------------
+
+In simple terms, Angular routes are like instructions that tell your Angular application which component to display based on the URL in the browser.
+
+Key Points about Angular Routes:
+
+1.Mapping URLs to Components:
+
+	Routes are used to map URLs to specific components in your application. For example, if a user navigates to http://your-app.com/home, you can set up a 	route to display the HomeComponent.
+
+2.Router Module:
+
+	Angular has a special module called the RouterModule, which you use to configure and manage these routes.
+
+3.Route Configuration:
+
+	You define routes in an array, where each route object specifies a path (URL) and the component that should be displayed.
+
+4.RouterOutlet:
+
+	In your main application component, you include a <router-outlet> tag. This acts as a placeholder where the routed component's template will be 	displayed.
+
+
+Angular routes hdgnna widiya
+----------------------------
+
+1. mulinma krnna one app component ekt adlaw athiyna src folder eke thiyna app.config .ts file ekt ynwa 
+
+2. eke e weddith thiynwa routes kiyla mokdda ekk define krla , eka gana hithnna ynna epa 
+
+3.eta passe krnna one Routes class eka import krgnna one , Routes class eke thiynne @angular/routes package eke 
+
+4.eta passe apita one krna routes tikat adla path eki e e path ekat adla mona component ekd kiyna eki denna one menna me wage 
+
+	"const routers : Routes = [
+  		{path: "first" , component:FirstComponent},
+  		{path: 'second' , component: SecondComponent}
+	]"
+
+5. eta psse methandi me 4 weni step ekedi dapu objcet name eka enam methndi routres kiyna eka providerRouter kiyna eke parameters widiyt denna one , example angular code ek bluwam therenwa 
+
+//meke thwa thiynwa e tika lygnna 
+
+
+

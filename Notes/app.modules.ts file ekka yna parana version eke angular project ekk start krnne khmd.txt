@@ -1,0 +1,16 @@
+Starting from Angular version 17, the default project setup no longer includes the app.module.ts file. This change is due to the introduction of "Standalone Components" in Angular 14.
+
+Here's why Angular made this shift:
+
+Simplified Application Structure: Standalone components remove the need for modules, resulting in a cleaner and less boilerplate-heavy application structure.
+
+Improved Developer Experience: With standalone components, you can focus on writing components without having to worry about setting up modules and providers.
+However, if you're more comfortable with the traditional module-based approach, here are two ways to bring back the app.module.ts file:
+
+
+1.Using the --no-standalone Flag:
+
+When creating a new Angular project using the Angular CLI, you can specify the --no-standalone flag to explicitly disable the standalone components setup. This will generate a project with the familiar app.module.ts file.
+
+"ng new my-project --no-standalone"
+

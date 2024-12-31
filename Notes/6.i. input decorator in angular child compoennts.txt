@@ -1,0 +1,47 @@
+hodt mathk thiygnna with input : the information flows from parent to child
+
+IThink of @Input() in Angular like passing a note between friends in school
+
+Here's where @Input() comes into play:
+
+1.TThe Sender (Child Component):
+Imagine you have a friend (let's call them "Child").
+This friend has some cool information (let's call it message) written on a piece of paper.
+They want to share this information with another friend (let's call them "Parent")..
+
+2.The Receiver (Parent Component):
+You have another friend (let's call them "Parent").
+Your friend "Child" wants to give you their note (message) so you can see it.
+
+Here's how @Input() works:
+
+Your friend "Child" writes their message on a piece of paper and puts it in an envelope labeled "Input".
+They give you the envelope with their message inside.
+Because you're expecting to receive messages from your friend "Child", you know to check the envelope labeled "Input".
+You take out the note (message) from the envelope and read it. Now you know what your friend "Child" wanted to share with you.
+
+
+In this analogy:
+
+The friend who wants to share the information (Child Component) uses @Input() to label the message.
+The friend who receives the information (Parent Component) knows to look for the labeled envelope (@Input()).
+
+So, @Input() is like passing a note (data) from one friend (Child Component) to another friend (Parent Component) in school. It helps components communicate and share information with each other.
+
+Q. so is input decortaor is a reference to parent component that this data was sent by the child compoent?
+
+A. 
+
+1.Child Component (Sender):
+The child component defines an @Input() property to indicate that it expects to receive data from its parent component.
+This property can be of any data type: string, number, object, array, etc.
+By decorating a property with @Input(), the child component signals to Angular that this property will accept input from its parent.
+
+2.Parent Component (Receiver):
+In the parent component's template, when using the child component, you can bind to the @Input() property of the child component.
+By binding to the @Input() property, you're passing data from the parent component to the child component.
+Whatever value you assign to the @Input() property in the parent component will be received and used by the child component.
+
+
+So, in summary, the @Input() decorator is more of a marker or indicator used by Angular to establish a communication channel from the parent component to the child component. It's not a direct reference to the parent component, but rather a way for the child component to declare that it can receive data from its parent.
+

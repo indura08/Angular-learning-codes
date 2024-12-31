@@ -1,0 +1,124 @@
+wadagath : module ekk hdnna nm command line command eka : " ng generate module moduleName "
+
+wadagath : "ng generate component contact -m contact" meke theruma contact componnt eka contact module folder eke hdnna kiyna eka kotinma kiwwoth contact folder eke hdnna kiyna eki kiynne me 
+
+
+In Angular, modules are a core concept that helps organize an application into cohesive blocks of functionality. They group related components, services, directives, and pipes together, making the application easier to manage and scale. Here's everything you need to know about Angular modules in simpler terms:
+
+What is an Angular Module?
+
+Module: A way to organize and group related code (components, services, directives, and pipes) in Angular.
+NgModule: The decorator used to define a module in Angular.
+
+
+Key Elements of an Angular Module
+
+Components: The building blocks of the user interface (UI).
+Services: Classes that handle business logic and data fetching.
+Directives: Instructions that modify the DOM.
+Pipes: Transformations that format data in templates.
+
+
+NgModule Decorator
+The NgModule decorator is used to define an Angular module. It takes a metadata object that describes how to compile and run the module.
+
+
+NgModule Metadata Properties
+
+1.declarations:
+
+Declares the components, directives, and pipes that belong to this module.
+Example: declarations: [AppComponent, HeaderComponent, FooterComponent]
+
+2.imports:
+
+Imports other modules that are required by components in this module.
+Example: imports: [BrowserModule, FormsModule, HttpClientModule]
+
+3.exports:
+
+Exports components, directives, and pipes that should be available to other modules.
+Example: exports: [HeaderComponent, FooterComponent]
+
+4.providers:
+
+Specifies the services that are available to the entire module.
+Example: providers: [AuthService, UserService]
+
+5.bootstrap:
+
+Specifies the root component that Angular should bootstrap when it starts the application.
+Only used in the root module (usually AppModule).
+Example: bootstrap: [AppComponent]
+
+6.entryComponents:
+
+Specifies the components that are dynamically loaded into the view.
+Not commonly used in modern Angular versions, as dynamic component loading is usually handled by Angular directly.
+
+
+
+example:
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { AuthService } from './services/auth.service';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule
+  ],
+  providers: [AuthService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+
+Types of Angular Modules
+
+1. Root Module:
+
+The main module that bootstraps the Angular application.
+Typically named AppModule.
+
+2.Feature Modules:
+
+Modules that group related components, services, and other code for a specific feature or section of the application.
+Example: UserModule, AdminModule.
+
+3.Shared Modules:
+
+Modules that export common components, directives, and pipes that are used across multiple modules.
+Example: SharedModule with commonly used UI components.
+
+4.Core Module:
+
+Module that provides services that should be instantiated once (singleton services) and used throughout the application.
+Example: CoreModule with authentication and logging services.
+
+
+Benefits of Using Modules
+Organization: Keeps the codebase organized and manageable.
+Reusability: Allows the reuse of components, directives, and pipes across the application.
+Lazy Loading: Enables lazy loading of feature modules to improve performance by loading code only when needed.
+Maintainability: Makes it easier to maintain and update the application by keeping related code together.
+
+Summary
+Angular modules are a fundamental part of structuring and organizing an Angular application. They group related components, services, directives, and pipes together, making the application more modular, maintainable, and scalable. By understanding and effectively using Angular modules, you can build well-organized and efficient Angular applications.
+
+
+

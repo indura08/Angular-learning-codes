@@ -1,0 +1,69 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!-- <div class = "container"> -->
+    <!-- <div>
+        {{ items[0].wishText }}/mehma ekin ka pennanth puluwan namuth items kiyna kalla list ekk hinda for loop ekakin menna mehm giyhki
+    </div> -->
+
+    <!-- <div *ngIf="items.length === 0">
+        There are no wishes available right now 
+    </div> -->
+
+    <!--for eka use krna widiya-->
+
+    <!--samnyen ngIf ekat ngElse kiyla ekk nha -->
+    <!-- <ul *ngIf="items.length > 0"  class = "wishlist"> 
+        <li *ngFor="let item of items">
+            <div class = "form-check">
+                <label class = "form-check-label">
+                    <input class="checkbox" type = "checkbox">{{item.wishText}}
+                </label>
+            </div>
+        </li>
+            
+    </ul> -->
+
+
+<!------------------------------------------------------------------------------------------------------------------>
+
+
+    <!-- <add-wish-form
+        (addWish)="items.push($event)"></add-wish-form> 
+    <br><br><br> -->
+
+
+    <!--me div rkn krnne fullfilled, unfulfilled saha all kiyna category 3 yatathe kanda krla display rnwa wishes tika -->
+    <!-- <div class = "row mt-3">
+        <div> -->
+            <!-- methna ngModel kiynne twoway databinding scn ekk , e kiynneNgmodel dammama app component class eke e kiynne app component .ts file eke thiyna listfilter ekat input ekn value ekk awama e varible ekt eka assign krnwa e wagema app.component.ts ekedi api nkn hari default agayak deela thiynwa wage scn ekkt agayak dunnoth eka input tag eke value eka widiyt pennum krnwa -->
+            <!-- <select
+                class="form-select"
+                [(ngModel)] = "listFilter"   
+            > <!methna ngModelChange kiynne event ekk ara click wage , ngModel kiynne ngModel kiynadirective eka  use krla  data binding sidda krla thiyna akarayi methandi , methnadi aphu oya meka blddi ngModel kiyna kalla ain wela gihilla athi. mokd ekn bug ekk enwa fulfilled, unfulfilled , all kiyla filter krddi aluthing wish ekk addd krma refresh nokra eka unfulfilled, fulfilled, all kiyna 3 ekekwatath eka paar watenne nha , ekt hriynna functionlaity eka hdla thiynne component.ts eke 
+                <option value="0">All</option>
+                <option value="1">Unfulfilled</option>
+                <option value="2">Fulfilled</option>
+        </select> me select eka wenama component ekkt aran giya e component eka thama oya pahalin thiynne-->
+
+        <!-- <wish-filter [(filter)]="filter"> mehma me kotu warahanai normal warahani dekam daanwa kiyna eke siraama theruma attatama two way data binding kiyna ekama thami habai eka hma ektm mehm damma kiyla adla wenwa kiyla chuttak blnna -->
+        <!--meke attama theruma awilla wish-filter component class eke filter property eka  e kiynne [(filter)] samanai app component class eke filter property ekt-->
+        <!-- </wish-filter> -->
+
+
+
+        <!-- </div>
+    </div> -->
+
+
+    <!--if eke else ekk natthi unt menna mehma krnna puluwan habai else eka dic tag eka thule liyna eka-->
+   <!-- <wish-list 
+        [wishes] = "items.filter(filter)"
+   ></wish-list> -->
+
+    <!--methandi thawth danagnna one attribute binidng waldi [] athule html element property ekaliyanne camelcase walin mokd aeka thule api liynne javascript kallak nisa . example colspan eka liyaddi  liynne [colSpan] widiyat -->
+
+    <!--apita koima welwakwath structural directives dekk ekama tag eka athule danna bha. ekiynne ngIf eka dammoth ngFor danna bha saha vise versa-->
+
+<!-- </div> -->
+
+<app-wish></app-wish>
+<app-contact></app-contact>

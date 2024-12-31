@@ -1,0 +1,22 @@
+In Spring Boot, @Repository is an annotation used to indicate that a particular class serves as a repository, typically for database operations. It's a specialization of the @Component annotation, meaning that it is a stereotype annotation that Spring uses for component scanning and auto-wiring.
+
+Here's what @Repository does and how it's typically used:
+
+1.Indicates Persistence Layer: The @Repository annotation indicates that a class is responsible for encapsulating storage, retrieval, and search behavior which emulates a collection of objects.
+
+2.Exception Translation: One of the key features of @Repository is that it provides exception translation. It converts technology-specific exceptions (such as SQLExceptions) into Spring's DataAccessException hierarchy, which allows for cleaner, more consistent error handling across the persistence layer.
+
+3.Automatic Bean Registration: Like other stereotype annotations (@Component, @Service), @Repository automatically registers the annotated class as a Spring bean during component scanning. This makes it available for dependency injection.
+
+4.Enables Spring Data Features: If you are using Spring Data JPA, Spring Data MongoDB, or any other Spring Data module, @Repository is often used to annotate the repository interfaces. Spring Data modules automatically provide implementations for these interfaces at runtime, allowing you to perform CRUD operations and more without writing boilerplate code.
+
+
+example:
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+    // Define custom methods if needed
+}

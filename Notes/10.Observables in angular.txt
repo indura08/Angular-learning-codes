@@ -1,0 +1,20 @@
+Think of observables like a stream of events or data over time. Imagine you're watching a live sports game on TV. The game is the observable, and each play or action during the game is an event emitted by the observable.
+
+Here's a simpler breakdown:
+
+
+1.Stream of Events: Observables are like TV channels streaming events continuously. Each event represents something happening, like a goal scored in a soccer game or a new message arriving in a chat app.
+
+
+2.Listener for Events: You can subscribe to these TV channels (observables) to listen for events. When you subscribe, you start receiving the events as they happen.
+
+
+3.Lazy Start: Observables are lazy, meaning they don't start sending events until you subscribe to them. It's like turning on the TV to watch a specific channel.
+
+
+4.Handling Events: Once you're subscribed, you can handle the events as they come in. You might react to a goal by cheering or react to a message by displaying it on the screen.
+
+
+5.Completion and Errors: Observables can also signal when they're done (completion) or if something went wrong (error). It's like the TV channel saying, "That's all for today" or "We're experiencing technical difficulties."
+
+In simpler terms, observables are like TV channels broadcasting events, and you can tune in to listen to these events. You can react to each event as it happens and stop listening when you're done.

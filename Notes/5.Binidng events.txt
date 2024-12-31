@@ -1,0 +1,46 @@
+In Angular, event binding allows you to listen for and respond to events raised by DOM elements (such as button clicks, mouse movements, keypresses, etc.) and execute some logic in response to those events. Binding events in Angular involves attaching event handlers to DOM elements using Angular's event binding syntax.
+
+Here's a brief overview of how event binding works in Angular:
+
+1.Event Binding Syntax: Event binding in Angular uses parentheses () to bind events to methods in the component class. The syntax is (event)="method()", where event is the name of the DOM event to listen for, and method() is the name of the method in the component class to execute when the event occurs.
+
+2.Event Object: Optionally, you can pass the event object to the method in the component class by adding $event as an argument to the method. This allows you to access properties of the event object such as target, keyCode, etc.
+
+3.Handling Events: In the component class, define methods that correspond to the event handlers specified in the template. These methods will be invoked when the specified events occur.
+
+Here's a simple example to illustrate event binding in Angular:
+
+html
+----
+
+<button (click)="onClick()">Click me!</button>
+
+
+
+component class (typescript)
+-----------------------------
+
+// Component Class (TypeScript)
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-example',
+  templateUrl: './example.component.html',
+  styleUrls: ['./example.component.css']
+})
+export class ExampleComponent {
+
+  // Method to handle the click event
+  onClick() {
+    console.log('Button clicked!');
+  }
+}
+
+In this example:
+
+We bind the (click) event of the <button> element to the onClick() method in the component class.
+
+When the button is clicked, the onClick() method is executed, logging "Button clicked!" to the console.
+
+Event binding in Angular is powerful and flexible, allowing you to create interactive and dynamic user interfaces by responding to various user actions. You can bind to a wide range of DOM events and customize the behavior of your application accordingly.
+
